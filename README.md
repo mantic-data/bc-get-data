@@ -135,7 +135,7 @@ TODO
 ## Étape Bonus 2 : Multi-métrique
 
 On veut pouvoir désormais requêter sur un ensemble de métrique d'un coup.
-Les mêmes filtres et groupement s'applique.
+Les mêmes filtres et groupement s'appliquent.
 
 Un exemple de payload attendu :
 ```

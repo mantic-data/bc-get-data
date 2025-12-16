@@ -16,7 +16,7 @@ $ uv run
 
 Le template contient déjà un exemple de endpoint, un modèle correspondant a une table dans la base SQLite, et une requête SQLAlchemy.
 Cela illustre tout les fonctionnalités des dépendances nécessaire pour la completion de cet exercice.
-Il n'est donc pas nécessaire (mais ce n'est pas décourager) de lire la documentation de Flask ou SQLAlchemy pour résoudre cet exercice.
+Il n'est donc pas nécessaire (mais ce n'est pas découragé) de lire la documentation de Flask ou SQLAlchemy pour résoudre cet exercice.
 
 ## IA/LLM
 
@@ -34,7 +34,7 @@ Votre endpoint doit pouvoir recevoir un payload JSON de la forme :
 
 La `metric` est toujours sous la forme `table.column` et décrit quel table et colonne de cette table il faut requêter.
 
-L'`aggregation` est toujours une des valeurs suivantes : "sum", "avg" ou "list". Elle représente l'aggregation a effectuer sur la métrique. "list" est l'absence d'aggregation.
+L'`aggregation` est toujours une des valeurs suivantes : "sum", "avg" ou "list". Elle représente l'aggregation a effectuer sur la métrique. "list" est l'absence d'aggregation: c'est à dire qu'on renvoie simplement la liste des objets.
 
 Depuis ce payload, votre endpoint doit requêter la table et colonne désigné avec l'aggregation choisi, puis renvoyer le résultat en JSON.
 

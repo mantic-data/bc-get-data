@@ -20,7 +20,7 @@ Il n'est donc pas nécessaire (mais ce n'est pas découragé) de lire la documen
 
 ## IA/LLM
 
-Vous pouvez utiliser tout les outils que vous souhaitez pour résoudre cet exercice, à l'exception du recours à une personne tièrce.
+Vous pouvez utiliser tout les outils que vous souhaitez pour résoudre cet exercice, à l'exception du recours à une personne tierce.
 Il n'y a pas d'obligation d'utiliser un outil basé sur les LLMs.
 
 # Étapes
@@ -111,7 +111,7 @@ TODO
 ## Étape Bonus 1 : Groupements et filtres sur d'autres tables
 
 Nous aimerions pouvoir désormais grouper et filtrer sur des tables autres que celle de la métriques.
-Il faut toutefois que le filtre ou le groupement soit sur une table qui est une relation directe (clef étrangère) avec la table de la métrique.
+Il faut toutefois que le filtre ou le groupement soit sur une table qui ait une relation directe (clef étrangère) avec la table de la métrique.
 
 Un exemple de payload attendu :
 ```

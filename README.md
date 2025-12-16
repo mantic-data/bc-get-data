@@ -1,7 +1,7 @@
 # Business Case : Get Data
 
 L'objectif de ce business case est de recréer un `get_data` light.
-Un endpoint prend un payload qui doit contenir au moins une métrique, et peu contenir plusieurs groupements et filtres.
+Un endpoint prend un payload qui doit contenir au moins une métrique, et peut contenir plusieurs groupements et filtres.
 Ce même endpoint doit convertir ce payload en requête SQL, et requêter la base SQLite fournis, puis renvoyer le résultat sérialisé.
 
 ## Départ

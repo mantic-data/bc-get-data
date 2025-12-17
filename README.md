@@ -16,8 +16,6 @@ $ flask --app main run
 ```
 
 Le template contient déjà un exemple de endpoint, un modèle correspondant a une table dans la base SQLite, et une requête SQLAlchemy.
-Cela illustre tout les fonctionnalités des dépendances nécessaire pour la completion de cet exercice.
-Il n'est donc pas nécessaire (mais ce n'est pas découragé) de lire la documentation de Flask ou SQLAlchemy pour résoudre cet exercice.
 
 ## IA/LLM
 
@@ -46,7 +44,7 @@ A titre d'exemple, le payload :
 
 Devrait renvoyer :
 ```
-8715888.42
+8715950.41
 ```
 
 ## Étape 2 : Filtre
@@ -64,7 +62,7 @@ Pour les strings :
 - Contient (sensible a la casse), opérateur `in`
 - Ne contient pas (sensible a la casse), opérateur `notin`
 
-On peut avoir plusieurs filtres.
+On peut avoir plusieurs filtres, qui seront alors des `AND`.
 
 Un exemple de payload attendu deviens :
 ```
@@ -99,7 +97,7 @@ Un exemple de payload attendu est :
   ]
   "group_by": [
     "facture.type",
-    "facture.service"
+    "facture.service_id"
   ]
 }
 ```
@@ -107,13 +105,13 @@ Un exemple de payload attendu est :
 Et devrait renvoyer :
 ```
 [
-  {1000000.0,	"Consulting Fee: Grade-R Cybernetic Interface", 1},
-  {450000.5,	"Isotope X-22 Replacement for Mining Laser", 4},
-  {5999999.99,	"Project SHODAN: Ethical Constraint Removal Data Chip", 2},
-  {150000.0,	"Project Shodan: Cortex Reaver Blueprint Generation", 5},
-  {999999.99,	"Project Shodan: Divine Avatar Rendering Engine (Face Display)", 2},
-  {78000.0,	"Project Shodan: Mutagen Virus Deployment System (Beta Grove)", 3},
-  {25000.0,	"R-Grade Cyber Rig Implantation", 5}
+  [1000000.0,	"Consulting Fee: Grade-R Cybernetic Interface", 1],
+  [450000.5,	"Isotope X-22 Replacement for Mining Laser", 4],
+  [5999999.99,	"Project SHODAN: Ethical Constraint Removal Data Chip", 2],
+  [150000.0,	"Project Shodan: Cortex Reaver Blueprint Generation", 5],
+  [999999.99,	"Project Shodan: Divine Avatar Rendering Engine (Face Display)", 2],
+  [78000.0,	"Project Shodan: Mutagen Virus Deployment System (Beta Grove)", 3],
+  [25000.0,	"R-Grade Cyber Rig Implantation", 5]
 ]
 ```
 
@@ -139,9 +137,9 @@ Un exemple de payload attendu :
 Et devrait renvoyer :
 ```
 [
-  {7006699.98, 1},
-  {12.0, 2},
-  {400.0, 3}
+  [7006699.98, 1],
+  [12.0, 2],
+  [400.0, ]
 ]
 ```
 
@@ -170,8 +168,8 @@ Un exemple de payload attendu :
 Et devrait renvoyer :
 ```
 [
-  {7006699.98, 1751674.995, 1},
-  {12.0, 12.0, 2},
-  {400.0, 400.0, 3}
+  [7006699.98, 1751674.995, 1],
+  [12.0, 12.0, 2],
+  [400.0, 400.0, 3]
 ]
 ```

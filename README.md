@@ -1,7 +1,7 @@
 # Business Case : Get Data
 
 L'objectif de ce business case est de recréer un `get_data` light.
-Un endpoint prend un payload qui doit contenir au moins une métrique, et peu contenir plusieurs groupements et filtres.
+Un endpoint prend un payload qui doit contenir au moins une métrique, et peut contenir plusieurs groupements et filtres.
 Ce même endpoint doit convertir ce payload en requête SQL, et requêter la base SQLite fournis, puis renvoyer le résultat sérialisé.
 
 ## Départ
@@ -17,11 +17,11 @@ $ flask --app main run
 
 Le template contient déjà un exemple de endpoint, un modèle correspondant a une table dans la base SQLite, et une requête SQLAlchemy.
 Cela illustre tout les fonctionnalités des dépendances nécessaire pour la completion de cet exercice.
-Il n'est donc pas nécessaire (mais ce n'est pas décourager) de lire la documentation de Flask ou SQLAlchemy pour résoudre cet exercice.
+Il n'est donc pas nécessaire (mais ce n'est pas découragé) de lire la documentation de Flask ou SQLAlchemy pour résoudre cet exercice.
 
 ## IA/LLM
 
-Vous pouvez utiliser tout les outils que vous souhaitez pour résoudre cet exercice, à l'exception du recours à une personne tièrce.
+Vous pouvez utiliser tout les outils que vous souhaitez pour résoudre cet exercice, à l'exception du recours à une personne tierce.
 Il n'y a pas d'obligation d'utiliser un outil basé sur les LLMs.
 
 # Étapes
@@ -35,7 +35,7 @@ Votre endpoint doit pouvoir recevoir un payload JSON de la forme :
 
 La `metric` est toujours sous la forme `table.column` et décrit quel table et colonne de cette table il faut requêter.
 
-L'`aggregation` est toujours une des valeurs suivantes : "sum", "avg" ou "list". Elle représente l'aggregation a effectuer sur la métrique. "list" est l'absence d'aggregation.
+L'`aggregation` est toujours une des valeurs suivantes : "sum", "avg" ou "list". Elle représente l'aggregation a effectuer sur la métrique. "list" est l'absence d'aggregation: c'est à dire qu'on renvoie simplement la liste des objets.
 
 Depuis ce payload, votre endpoint doit requêter la table et colonne désigné avec l'aggregation choisi, puis renvoyer le résultat en JSON.
 
@@ -112,7 +112,7 @@ TODO
 ## Étape Bonus 1 : Groupements et filtres sur d'autres tables
 
 Nous aimerions pouvoir désormais grouper et filtrer sur des tables autres que celle de la métriques.
-Il faut toutefois que le filtre ou le groupement soit sur une table qui est une relation directe (clef étrangère) avec la table de la métrique.
+Il faut toutefois que le filtre ou le groupement soit sur une table qui ait une relation directe (clef étrangère) avec la table de la métrique.
 
 Un exemple de payload attendu :
 ```
@@ -136,7 +136,7 @@ TODO
 ## Étape Bonus 2 : Multi-métrique
 
 On veut pouvoir désormais requêter sur un ensemble de métrique d'un coup.
-Les mêmes filtres et groupement s'applique.
+Les mêmes filtres et groupement s'appliquent.
 
 Un exemple de payload attendu :
 ```

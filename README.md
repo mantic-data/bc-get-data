@@ -11,7 +11,8 @@ Ce template fournis la base permettant de developper ce projet. Il utilise Flask
 Pour installer les dépendances et lancer le projet, tout ce fait via `uv` :
 ```
 $ uv sync
-$ uv run
+$ source .venv/bin/activate
+$ flask --app main run
 ```
 
 Le template contient déjà un exemple de endpoint, un modèle correspondant a une table dans la base SQLite, et une requête SQLAlchemy.
@@ -60,8 +61,8 @@ Les filtres accepté pour les nombres sont les suivants :
 - Égal, opérateur `=`
 
 Pour les strings :
-- Contient (sans casse), opérateur `in`
-- Ne contient pas (sans casse), opérateur `notin`
+- Contient (sensible a la casse), opérateur `in`
+- Ne contient pas (sensible a la casse), opérateur `notin`
 
 On peut avoir plusieurs filtres.
 

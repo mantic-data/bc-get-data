@@ -46,7 +46,7 @@ A titre d'exemple, le payload :
 
 Devrait renvoyer :
 ```
-8715950.41
+8715888.42
 ```
 
 ## Étape 2 : Filtre

@@ -23,7 +23,7 @@ class Client(Base):
 class Address(Base):
     __tablename__ = "address"
     id: Mapped[int] = mapped_column(primary_key=True)
-    postal_code: Mapped[str] = mapped_column(String())
+    postal_code: Mapped[int] = mapped_column(Integer())
     first_line: Mapped[str] = mapped_column(String())
     city: Mapped[str] = mapped_column(String())
     client_id: Mapped[int] = mapped_column(ForeignKey("client.id"))

@@ -41,12 +41,12 @@ Depuis ce payload, votre endpoint doit requêter la table et colonne désigné a
 
 A titre d'exemple, le payload :
 ```
-{"metric": "facture.montant", "aggregation": "sum"}
+{"metric": "facture.amount", "aggregation": "sum"}
 ```
 
 Devrait renvoyer :
 ```
-TODO
+8715950.41
 ```
 
 ## Étape 2 : Filtre
@@ -69,18 +69,18 @@ On peut avoir plusieurs filtres.
 Un exemple de payload attendu deviens :
 ```
 {
-  "metric": "facture.montant",
+  "metric": "facture.amount",
   "aggregation": "sum",
   "filters": [
-    {"on": "facture.montant", "op": "<", "value": "100.00"},
-    {"on": "facture.type", "op": "in", "value": "fourniture"}
+    {"on": "facture.amount", "op": "<", "value": "1000.00"},
+    {"on": "facture.type", "op": "in", "value": "Shodan"}
   ]
 }
 ```
 
 Le résultat attendu est :
 ```
-TODO
+451.00
 ```
 
 ## Étape 3 : Groupement simple
@@ -92,10 +92,10 @@ Un groupement est simplement défini par la table et la colonne sur laquelle gro
 Un exemple de payload attendu est :
 ```
 {
-  "metric": "facture.montant",
+  "metric": "facture.amount",
   "aggregation": "sum",
   "filters": [
-    {"on": "facture.montant", "op": ">", "value": "30.00"},
+    {"on": "facture.amount", "op": ">", "value": "9999.99"},
   ]
   "group_by": [
     "facture.type",
@@ -106,7 +106,15 @@ Un exemple de payload attendu est :
 
 Et devrait renvoyer :
 ```
-TODO
+[
+  {1000000.0,	"Consulting Fee: Grade-R Cybernetic Interface", 1},
+  {450000.5,	"Isotope X-22 Replacement for Mining Laser", 4},
+  {5999999.99,	"Project SHODAN: Ethical Constraint Removal Data Chip", 2},
+  {150000.0,	"Project Shodan: Cortex Reaver Blueprint Generation", 5},
+  {999999.99,	"Project Shodan: Divine Avatar Rendering Engine (Face Display)", 2},
+  {78000.0,	"Project Shodan: Mutagen Virus Deployment System (Beta Grove)", 3},
+  {25000.0,	"R-Grade Cyber Rig Implantation", 5}
+]
 ```
 
 ## Étape Bonus 1 : Groupements et filtres sur d'autres tables
@@ -117,10 +125,10 @@ Il faut toutefois que le filtre ou le groupement soit sur une table qui ait une 
 Un exemple de payload attendu :
 ```
 {
-  "metric": "facture.montant",
+  "metric": "facture.amount",
   "aggregation": "sum",
   "filters": [
-    {"on": "service.name", "op": "in", "value": "tech"},
+    {"on": "service.name", "op": "in", "value": "Artificial Intelligence"},
   ]
   "group_by": [
     "client.name"
@@ -130,20 +138,40 @@ Un exemple de payload attendu :
 
 Et devrait renvoyer :
 ```
-TODO
+[
+  {7006699.98, 1},
+  {12.0, 2},
+  {400.0, 3}
+]
 ```
 
 ## Étape Bonus 2 : Multi-métrique
 
-On veut pouvoir désormais requêter sur un ensemble de métrique d'un coup.
+On veut pouvoir désormais requêter sur un ensemble de métrique (avec chacune leurs aggregation) d'un coup.
 Les mêmes filtres et groupement s'appliquent.
 
 Un exemple de payload attendu :
 ```
-TODO
+{
+  "metrics": [
+    {"value": "facture.amount", "aggregation": "sum"},
+    {"value": "facture.amount", "aggregation": "avg"}
+  ],
+  "filters": [
+    {"on": "service.name", "op": "in", "value": "Artificial Intelligence"},
+  ]
+  "group_by": [
+    "client.name"
+  ]
+}
+
 ```
 
 Et devrait renvoyer :
 ```
-TODO
+[
+  {7006699.98, 1751674.995, 1},
+  {12.0, 12.0, 2},
+  {400.0, 400.0, 3}
+]
 ```

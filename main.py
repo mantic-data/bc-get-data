@@ -27,7 +27,7 @@ def find_clients():
         ], 200
 
 
-@app.route("/shodan_budget", methods=["GET"])
+@app.route("/clients/factures", methods=["GET"])
 def shodan_budget():
     query = (
         select(func.sum(Facture.amount), Client.name)

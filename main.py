@@ -28,7 +28,7 @@ def find_clients():
 
 
 @app.route("/clients/factures", methods=["GET"])
-def shodan_budget():
+def get_factures_grouped_by_clients():
     query = (
         select(func.sum(Facture.amount), Client.name)
         .join(Client, Client.id == Facture.client_id)
